@@ -22,7 +22,7 @@ A web application for managing and participating in cyber competitions. This pro
 
 1. Clone the repository:
    ```zsh
-   git clone <repo-url>
+   git clone https://github.com/jooexploit/Cyber-Competition-website
    ```
 2. Install dependencies:
    ```zsh
@@ -54,4 +54,4 @@ Contributions are welcome! Please fork the repository and submit a pull request.
 
 ## Contact
 
-For questions or support, please contact the project maintainer at: [your-email@example.com]
+For questions or support, please contact the project maintainer at: [youseftamereg@gmail.com]

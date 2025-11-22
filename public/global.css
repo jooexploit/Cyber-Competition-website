@@ -1,0 +1,35 @@
+body {
+  margin: 0;
+  line-height: normal;
+}
+
+:root {
+  /* fonts */
+  --font-orbitron: Orbitron;
+
+  /* font sizes */
+  --font-size-21xl: 40px;
+  --font-size-13xl: 32px;
+  --font-size-5xl: 24px;
+  --font-size-46xl: 65px;
+  --font-size-33xl: 52px;
+  --font-size-20xl: 39px;
+
+  /* Colors */
+  --color-white: #fff;
+  --color-steelblue: #385682;
+  --color-firebrick: #ba2027;
+
+  /* Gaps */
+  --gap-mini: 15px;
+  --gap-5xs: 8px;
+
+  /* Paddings */
+  --padding-xl: 20px;
+  --padding-6xl-4: 25.4px;
+  --padding-4xs: 9px;
+  --padding-3xs: 10px;
+
+  /* Border radiuses */
+  --br-81xl: 100px;
+}

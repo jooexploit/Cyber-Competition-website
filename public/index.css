@@ -1,0 +1,850 @@
+.cyper-name-child {
+  position: absolute;
+  top: 0;
+  left: calc(50% - 333.95px);
+  border-radius: 25px;
+  background: linear-gradient(231.38deg, #d9d9d9, #1b1212 98.95%);
+  width: 100%;
+  height: 100%;
+}
+.cyberquest-20 {
+  position: absolute;
+  top: calc(50% - 40px);
+  left: calc(50% - 304.95px);
+  line-height: 80px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  width: 609px;
+  height: 80px;
+}
+.cyper-name {
+  height: 134px;
+  width: 667.9px;
+  position: relative;
+  display: none;
+  max-width: 100%;
+}
+.a,
+.a1 {
+  text-decoration: none;
+  height: 63.4px;
+  position: relative;
+  font-weight: 600;
+  color: inherit;
+  display: flex;
+  align-items: center;
+}
+.a {
+  min-width: 125px;
+}
+.a1 {
+  flex-shrink: 0;
+  z-index: 1;
+}
+.frame-wrapper,
+.parent,
+.wrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.wrapper {
+  flex-direction: column;
+  padding: 1px 0 0;
+  color: var(--color-firebrick);
+}
+.frame-wrapper,
+.parent {
+  flex-direction: row;
+}
+.parent {
+  flex: 1;
+  flex-shrink: 0;
+}
+.frame-wrapper {
+  align-self: stretch;
+  padding: 0 0 0 var(--padding-3xs);
+}
+.altered-sticker-1 {
+  width: 227px;
+  height: 227px;
+  position: relative;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+.frame-parent,
+.numbered-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  box-sizing: border-box;
+}
+.frame-parent {
+  align-self: stretch;
+  height: 1039.1px;
+  padding: 0 0 974.7px;
+  gap: 767.7px;
+}
+.numbered-list {
+  width: 242px;
+  padding: 40.9px 0 0;
+  font-size: var(--font-size-46xl);
+  color: var(--color-white);
+}
+.cc-logo-white-1 {
+  height: 257px;
+  width: 263px;
+  position: relative;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+.cc-logo-white-1-wrapper {
+  width: 1159px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0 var(--padding-xl);
+  box-sizing: border-box;
+  max-width: 100%;
+}
+.coin-icon {
+  width: 209.4px;
+  height: 208.6px;
+  position: relative;
+  object-fit: cover;
+}
+.team-x-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 132.4px 0 0;
+}
+.coin-2-icon {
+  position: absolute;
+  top: 132.4px;
+  left: 691.6px;
+  width: 209.4px;
+  height: 207.7px;
+  object-fit: cover;
+}
+.cyber,
+.quest-20 {
+  position: relative;
+  font-weight: 600;
+}
+.quest-20 {
+  color: var(--color-firebrick);
+  display: inline-block;
+  max-width: 100%;
+}
+.team-y-icon,
+.team-y-icon-image {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  max-width: 100%;
+}
+.team-y-icon-image {
+  gap: 4px;
+}
+.team-y-icon {
+  padding: 0 34px;
+  box-sizing: border-box;
+}
+.team-x {
+  position: relative;
+  font-weight: 600;
+}
+.points-0 {
+  flex: 1;
+  position: relative;
+  line-height: 42px;
+}
+.points-headers,
+.team-name-headers,
+.team-name-labels {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.points-headers {
+  width: 242px;
+  flex-direction: row;
+  padding: 0 px 0 var(--padding-4xs);
+  box-sizing: border-box;
+  font-size: var(--font-size-21xl);
+}
+.team-name-headers,
+.team-name-labels {
+  flex-direction: column;
+}
+.team-name-labels {
+  gap: var(--gap-5xs);
+}
+.team-name-headers {
+  padding: var(--padding-6xl-4) 11px 0 0;
+}
+.divider {
+  height: 258.4px;
+  width: 1px;
+  position: relative;
+  border-right: 1px solid var(--color-white);
+  box-sizing: border-box;
+}
+.team-y {
+  align-self: stretch;
+  position: relative;
+  font-weight: 600;
+}
+.points-01 {
+  flex: 1;
+  position: relative;
+  line-height: 42px;
+}
+.points-0-wrapper {
+  width: 242px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0 var(--padding-4xs) 0 var(--padding-3xs);
+  box-sizing: border-box;
+  font-size: var(--font-size-21xl);
+}
+.team-y-parent {
+  align-self: stretch;
+  flex-direction: column;
+  gap: var(--gap-5xs);
+}
+.team-name-headers1,
+.team-y-details,
+.team-y-parent,
+.teams-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.team-name-headers1 {
+  width: 305px;
+  flex-direction: column;
+  padding: var(--padding-6xl-4) 0 0;
+  box-sizing: border-box;
+}
+.team-y-details,
+.teams-header {
+  align-self: stretch;
+  flex-direction: row;
+  gap: 47.1px;
+}
+.team-y-details {
+  flex-direction: column;
+  gap: 42.6px;
+  max-width: 100%;
+}
+.question-1 {
+  position: relative;
+}
+.question-1-wrapper,
+.team-y-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  max-width: 100%;
+}
+.question-1-wrapper {
+  flex-direction: row;
+  padding: 0 131px 0 132px;
+  box-sizing: border-box;
+}
+.team-y-row {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 692px;
+  flex-direction: column;
+  gap: var(--gap-mini);
+}
+.team-x-score {
+  height: 479px;
+  flex: 1;
+  position: relative;
+  min-width: 586px;
+  max-width: 100%;
+}
+.team-x-details,
+.team-x-row {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  max-width: 100%;
+}
+.team-x-details {
+  flex: 1;
+  gap: 47.6px;
+}
+.team-x-row {
+  width: 1162px;
+  padding: 0 2px;
+  box-sizing: border-box;
+}
+.what-is-tcpip {
+  position: relative;
+  right: -5px;
+  width: calc(100% + 10px);
+  margin-top: 20px;
+  text-align: left;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  padding: 0 10px;
+  box-sizing: border-box;
+  font-size: 20px;
+  font-weight: 600;
+  font-family: inherit;
+}
+.answer-boxes-child {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: var(--br-81xl);
+  background-color: var(--color-steelblue);
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+.answer-boxes-inner,
+.answer-boxes-item {
+  position: absolute;
+  background-color: var(--color-firebrick);
+}
+.answer-boxes-item {
+  top: 0;
+  left: 0;
+  border-radius: var(--br-81xl);
+  width: 760px;
+  height: 20px;
+  z-index: 1;
+}
+.answer-boxes-inner {
+  top: -21px;
+  right: 210px;
+  filter: blur(91px);
+  border-radius: 200px;
+  width: 60px;
+  height: 60px;
+  z-index: 2;
+}
+.answer-boxes {
+  align-self: stretch;
+  height: 20px;
+  position: relative;
+  border-radius: var(--br-81xl);
+  background-color: var(--color-steelblue);
+}
+.answer-input {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 0 0 13px;
+  box-sizing: border-box;
+  min-width: 650px;
+  max-width: 100%;
+}
+.additional-info {
+  position: relative;
+  font-weight: 600;
+}
+.answer-area,
+.answer-container {
+  display: flex;
+  flex-direction: row;
+  max-width: 100%;
+}
+.answer-container {
+  width: 1149px;
+  align-items: flex-end;
+  justify-content: flex-start;
+  gap: 62px;
+}
+.answer-area {
+  align-self: stretch;
+  align-items: flex-start;
+  justify-content: flex-end;
+  font-size: var(--font-size-21xl);
+  color: var(--color-white);
+}
+.what-is-tcpip-parent {
+  align-self: stretch;
+  gap: 29px;
+  font-size: 128px;
+  color: #cdcecf;
+}
+.game-board,
+.teams-and-points,
+.what-is-tcpip-parent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  max-width: 100%;
+}
+.teams-and-points {
+  align-self: stretch;
+}
+.game-board {
+  flex: 1;
+  padding: 0 0 104px;
+  box-sizing: border-box;
+  width: 100%;
+  position: relative;
+}
+.altered-sticker-2 {
+  height: 227px;
+  width: 227px;
+  position: absolute;
+  object-fit: cover;
+  bottom: 20px;
+  right: 20px;
+  z-index: 10;
+}
+
+.thm-sticker.png {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+  position: relative;
+  z-index: 1;
+}
+
+
+.game-info {
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-content: flex-end;
+  gap: 73px;
+  flex-shrink: 0;
+  max-width: 100%;
+  text-align: left;
+  font-size: var(--font-size-46xl);
+  color: var(--color-white);
+  font-family: var(--font-orbitron);
+  position: relative;
+  min-height: 600px;
+}
+.frame-group,
+.home {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  box-sizing: border-box;
+}
+.frame-group {
+  height: 1080px;
+  flex: 1;
+  flex-direction: column;
+  padding: 0 0 823px;
+  gap: 20px;
+  max-width: calc(100% - 361px);
+}
+.home {
+  width: 100%;
+  position: relative;
+  background-color: #1b1212;
+  overflow: hidden;
+  flex-direction: row;
+  padding: 0 var(--padding-xl);
+  gap: 119px;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  font-size: 68px;
+  color: #000;
+  font-family: var(--font-orbitron);
+}
+@media screen and (max-width: 1275px) {
+  .frame-parent {
+    padding-bottom: 634px;
+    box-sizing: border-box;
+  }
+  .answer-container {
+    gap: 31px;
+  }
+  .frame-group {
+    height: auto;
+    padding-bottom: 535px;
+    box-sizing: border-box;
+  }
+}
+@media screen and (max-width: 1100px) {
+  .frame-parent {
+    padding-bottom: 412px;
+    box-sizing: border-box;
+  }
+  .numbered-list {
+    display: none;
+    padding-top: 27px;
+    box-sizing: border-box;
+  }
+  .answer-container,
+  .team-x-details {
+    flex-wrap: wrap;
+  }
+  .game-board {
+    padding-bottom: 68px;
+    box-sizing: border-box;
+    min-width: 100%;
+  }
+  .frame-group {
+    max-width: 100%;
+  }
+  .home {
+    gap: 59px;
+  }
+}
+@media screen and (max-width: 750px) {
+  .cyberquest-20 {
+    font-size: 54px;
+    line-height: 64px;
+  }
+  .a,
+  .a1,
+  .cyber,
+  .quest-20 {
+    font-size: var(--font-size-33xl);
+  }
+  .team-y-icon-image {
+    flex-wrap: wrap;
+  }
+  .team-x {
+    font-size: var(--font-size-33xl);
+  }
+  .points-0 {
+    font-size: var(--font-size-13xl);
+    line-height: 34px;
+  }
+  .divider {
+    width: 100%;
+    height: 1px;
+  }
+  .team-y {
+    font-size: var(--font-size-33xl);
+  }
+  .points-01 {
+    font-size: var(--font-size-13xl);
+    line-height: 34px;
+  }
+  .teams-header {
+    flex-wrap: wrap;
+  }
+  .question-1 {
+    font-size: var(--font-size-33xl);
+  }
+  .team-x-score {
+    height: auto;
+    min-height: 479;
+    min-width: 100%;
+  }
+  .team-x-details {
+    gap: 24px;
+  }
+  .what-is-tcpip {
+    font-size: 51px;
+  }
+  .answer-input {
+    min-width: 100%;
+  }
+  .additional-info {
+    font-size: var(--font-size-13xl);
+  }
+  .answer-container {
+    gap: var(--gap-mini);
+  }
+  .game-info {
+    gap: 36px;
+  }
+  .frame-group {
+    padding-bottom: 348px;
+    box-sizing: border-box;
+  }
+  .home {
+    gap: 30px;
+  }
+  .altered-sticker-2 {
+    height: 180px;
+    width: 180px;
+    bottom: 15px;
+    right: 15px;
+  }
+}
+@media screen and (max-width: 450px) {
+  .cyberquest-20 {
+    font-size: 41px;
+    line-height: 48px;
+  }
+  .a,
+  .a1 {
+    font-size: var(--font-size-20xl);
+  }
+  .frame-parent {
+    padding-bottom: 268px;
+    box-sizing: border-box;
+  }
+  .numbered-list {
+    padding-top: var(--padding-xl);
+    box-sizing: border-box;
+  }
+  .cyber,
+  .quest-20,
+  .team-x {
+    font-size: var(--font-size-20xl);
+  }
+  .points-0 {
+    font-size: var(--font-size-5xl);
+    line-height: 25px;
+  }
+  .team-y {
+    font-size: var(--font-size-20xl);
+  }
+  .points-01 {
+    font-size: var(--font-size-5xl);
+    line-height: 25px;
+  }
+  .question-1 {
+    font-size: var(--font-size-20xl);
+  }
+  .what-is-tcpip {
+    font-size: var(--font-size-13xl);
+  }
+  .additional-info {
+    font-size: var(--font-size-5xl);
+  }
+  .game-board {
+    padding-bottom: 44px;
+    box-sizing: border-box;
+  }
+  .game-info {
+    gap: 18px;
+  }
+  .frame-group {
+    padding-bottom: 226px;
+    box-sizing: border-box;
+  }
+  .altered-sticker-2 {
+    height: 150px;
+    width: 150px;
+    bottom: 10px;
+    right: 10px;
+  }
+}
+.questions-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  text-align: center;
+  max-width: 800px;
+  position: relative;
+  flex-shrink: 0;
+  
+
+  
+}
+.question-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  margin-bottom: 20px;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.question-number {
+  color: var(--color-firebrick);
+  font-family: var(--font-orbitron);
+  font-size: 24px;
+  margin: 0;
+}
+.question-progress {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.progress-bar {
+  width: 100%;
+  height: 6px;
+  background: rgba(27, 18, 18, 0.5);
+  border-radius: 5px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: var(--color-firebrick);
+  width: 0%;
+  transition: width 0.3s ease;
+  border-radius: 5px;
+}
+.progress-text {
+  color: white;
+  font-family: var(--font-orbitron);
+  font-size: 24px;
+  margin-top: 5px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+@keyframes progressPulse {
+  0% { opacity: 0.7; }
+  50% { opacity: 1; }
+  100% { opacity: 0.7; }
+}
+.progress-fill.active {
+  animation: progressPulse 2s infinite;
+}
+@media screen and (max-width: 750px) {
+  .question-progress {
+    max-width: 400px;
+  }
+  .progress-text {
+    font-size: 20px;
+  }
+  .what-is-tcpip {
+    font-size: var(--font-size-21xl);
+    padding: 15px 0;
+  }
+}
+@media screen and (max-width: 450px) {
+  .question-progress {
+    max-width: 300px;
+    padding: 8px;
+  }
+  .progress-bar {
+    height: 4px;
+  }
+  .progress-text {
+    font-size: 16px;
+  }
+  .what-is-tcpip {
+    font-size: var(--font-size-13xl);
+    padding: 10px 0;
+  }
+  .dot {
+    width: 10px;
+    height: 10px;
+  }
+}
+.progress-dots {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+  padding: 0 5px;
+  gap: 15px;
+}
+.dot {
+  width: 15px;
+  height: 15px;
+  background: rgba(27, 18, 18, 0.3);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  border: 2px solid var(--color-firebrick);
+}
+.dot.completed {
+  background: var(--color-firebrick);
+}
+.dot.current {
+  background: var(--color-firebrick);
+  box-shadow: 0 0 10px var(--color-firebrick);
+  transform: scale(1.2);
+}
+.progress-bar {
+  position: relative;
+  margin: 20px 0;
+}
+.progress-bar::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: rgba(27, 18, 18, 0.3);
+  transform: translateY(-50%);
+  z-index: 0;
+}
+.progress-fill {
+  position: relative;
+  z-index: 1;
+}
+@media screen and (max-width: 750px) {
+  .dot {
+    width: 12px;
+    height: 12px;
+  }
+}
+@media screen and (max-width: 450px) {
+  .dot {
+    width: 10px;
+    height: 10px;
+  }
+}
+.what-is-tcpip-parent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Container for game board and stickers */
+.game-board-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  min-height: 600px;
+}
+
+.sticker-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 250px;
+  pointer-events: none;
+}
+
+@media screen and (max-width: 1100px) {
+  .sticker-container {
+    width: 200px;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .sticker-container {
+    width: 150px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .sticker-container {
+    width: 120px;
+  }
+}

@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+
+<body>
+    <div id="admin">
+        <h2>Admin Panel</h2>
+
+        <div id="teamControls">
+            <div>
+                <label for="team1NameInput">Team A Name</label>
+                <input type="text" id="team1NameInput" placeholder="Enter Team A name" value="Team A">
+            </div>
+            <div>
+                <label for="team1PointsInput">Team A Points</label>
+                <input type="number" id="team1PointsInput" placeholder="Enter points" value="0">
+            </div>
+            <div>
+                <label for="team2NameInput">Team B Name</label>
+                <input type="text" id="team2NameInput" placeholder="Enter Team B name" value="Team B">
+            </div>
+            <div>
+                <label for="team2PointsInput">Team B Points</label>
+                <input type="number" id="team2PointsInput" placeholder="Enter points" value="0">
+            </div>
+            <button id="updateTeams">Update Teams</button>
+        </div>
+
+        <div id="timerControls">
+            <div class="timer-display">
+                <span id="timerDisplay">30</span> seconds
+            </div>
+            <div class="timer-buttons">
+                <button id="startTimer" class="timer-button">Start</button>
+                <button id="stopTimer" class="timer-button stop">Stop</button>
+                <button id="resetTimer" class="timer-button reset">Reset</button>
+            </div>
+            <div class="timer-input">
+                <label for="timerInput">Set Timer (seconds)</label>
+                <input type="number" id="timerInput" placeholder="Enter time in seconds" value="30">
+                <button id="setTimer" class="timer-button set">Set</button>
+            </div>
+        </div>
+
+        <div id="questionControls">
+            <h2>Question Management</h2>
+            <div class="current-question">
+                <span>Current Question: </span>
+                <span id="currentQuestionNumber">1</span>
+            </div>
+            <div class="question-navigation">
+                <button id="prevQuestion" class="nav-button">Previous</button>
+                <button id="nextQuestion" class="nav-button">Next</button>
+            </div>
+            <div class="question-form">
+                <div>
+                    <label for="questionInput">Question</label>
+                    <input type="text" id="questionInput" placeholder="Enter question">
+                </div>
+                <div>
+                    <label for="questionNumber">Question Number</label>
+                    <input type="number" id="questionNumber" min="1" value="1">
+                </div>
+            </div>
+            <div class="question-buttons">
+                <button id="addQuestion" class="question-button add">Add Question</button>
+                <button id="updateQuestion" class="question-button update">Update Question</button>
+                <button id="removeQuestion" class="question-button remove">Remove Question</button>
+            </div>
+            <div class="questions-list">
+                <h3>Current Questions</h3>
+                <div id="questionsList"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Import Socket Events
+        const SOCKET_EVENTS = {
+            UPDATE: 'update',
+            START_TIMER: 'startTimer',
+            STOP_TIMER: 'stopTimer',
+            UPDATE_TIMER: 'updateTimer',
+            UPDATE_TEAMS: 'updateTeams',
+            TIMER_COMPLETE: 'timerComplete',
+            ADD_QUESTION: 'addQuestion',
+            UPDATE_QUESTION: 'updateQuestion',
+            REMOVE_QUESTION: 'removeQuestion'
+        };
+
+        const socket = io();
+        let isTimerRunning = false;
+
+        // DOM Elements
+        const startTimerBtn = document.getElementById('startTimer');
+        const stopTimerBtn = document.getElementById('stopTimer');
+        const resetTimerBtn = document.getElementById('resetTimer');
+        const setTimerBtn = document.getElementById('setTimer');
+        const timerInput = document.getElementById('timerInput');
+        const timerDisplay = document.getElementById('timerDisplay');
+        const updateTeamsBtn = document.getElementById('updateTeams');
+
+        // Team Elements
+        const team1NameInput = document.getElementById('team1NameInput');
+        const team1PointsInput = document.getElementById('team1PointsInput');
+        const team2NameInput = document.getElementById('team2NameInput');
+        const team2PointsInput = document.getElementById('team2PointsInput');
+
+        // Current state
+        let teams = {
+            team1: { name: "Team A", points: 0 },
+            team2: { name: "Team B", points: 0 },
+            timer: 30,
+            questions: []
+        };
+
+        // Timer Controls
+        startTimerBtn.addEventListener('click', () => {
+            socket.emit('startTimer');
+            isTimerRunning = true;
+            updateButtonStates();
+        });
+
+        stopTimerBtn.addEventListener('click', () => {
+            socket.emit('stopTimer');
+            isTimerRunning = false;
+            updateButtonStates();
+        });
+
+        resetTimerBtn.addEventListener('click', () => {
+            socket.emit('stopTimer');
+            socket.emit('updateTimer', 30);
+            timerInput.value = 30;
+            isTimerRunning = false;
+            updateButtonStates();
+        });
+
+        setTimerBtn.addEventListener('click', () => {
+            const newTime = parseInt(timerInput.value);
+            if (newTime >= 0) {
+                socket.emit('updateTimer', newTime);
+            }
+        });
+
+        // Team Controls
+        updateTeamsBtn.addEventListener('click', () => {
+            teams.team1.name = team1NameInput.value;
+            teams.team1.points = parseInt(team1PointsInput.value) || 0;
+            teams.team2.name = team2NameInput.value;
+            teams.team2.points = parseInt(team2PointsInput.value) || 0;
+            socket.emit('updateTeams', teams);
+            updateTeamsBtn.textContent = 'Updated!';
+            updateTeamsBtn.classList.add('success');
+            setTimeout(() => {
+                updateTeamsBtn.textContent = 'Update Teams';
+                updateTeamsBtn.classList.remove('success');
+            }, 1000);
+        });
+
+        function updateButtonStates() {
+            startTimerBtn.disabled = isTimerRunning;
+            stopTimerBtn.disabled = !isTimerRunning;
+            resetTimerBtn.disabled = isTimerRunning;
+            setTimerBtn.disabled = isTimerRunning;
+            timerInput.disabled = isTimerRunning;
+            
+            // Update button styles
+            startTimerBtn.classList.toggle('active', !isTimerRunning);
+            stopTimerBtn.classList.toggle('active', isTimerRunning);
+        }
+
+        socket.on('update', (newTeams) => {
+            teams = newTeams;
+            timerDisplay.textContent = teams.timer;
+            
+            // Update team inputs
+            team1NameInput.value = teams.team1.name;
+            team1PointsInput.value = teams.team1.points;
+            team2NameInput.value = teams.team2.name;
+            team2PointsInput.value = teams.team2.points;
+            
+            // Update timer state
+            isTimerRunning = teams.timer > 0;
+            updateButtonStates();
+        });
+
+        socket.on('timerComplete', () => {
+            isTimerRunning = false;
+            updateButtonStates();
+            alert('Timer completed!');
+        });
+
+        // Question Management
+        const questionInput = document.getElementById('questionInput');
+        const questionNumber = document.getElementById('questionNumber');
+        const addQuestionBtn = document.getElementById('addQuestion');
+        const updateQuestionBtn = document.getElementById('updateQuestion');
+        const removeQuestionBtn = document.getElementById('removeQuestion');
+        const questionsList = document.getElementById('questionsList');
+
+        let selectedQuestion = null;
+
+        function updateQuestionsList(questions = []) {
+            questionsList.innerHTML = '';
+            questions.forEach(question => {
+                const div = document.createElement('div');
+                div.className = 'question-item';
+                if (selectedQuestion && selectedQuestion.id === question.id) {
+                    div.classList.add('selected');
+                }
+                div.innerHTML = `
+                    <span>#${question.number}: ${question.text}</span>
+                `;
+                div.onclick = () => selectQuestion(question);
+                questionsList.appendChild(div);
+            });
+        }
+
+        function selectQuestion(question) {
+            selectedQuestion = question;
+            questionInput.value = question.text;
+            questionNumber.value = question.number;
+            document.querySelectorAll('.question-item').forEach(item => {
+                item.classList.remove('selected');
+            });
+            const selectedDiv = Array.from(questionsList.children)
+                .find(div => div.textContent.includes(`#${question.number}`));
+            if (selectedDiv) {
+                selectedDiv.classList.add('selected');
+            }
+        }
+
+        addQuestionBtn.addEventListener('click', () => {
+            if (!questionInput.value.trim()) {
+                alert('Please enter a question');
+                return;
+            }
+            const question = {
+                id: Date.now(),
+                text: questionInput.value.trim(),
+                number: parseInt(questionNumber.value) || 1
+            };
+            socket.emit(SOCKET_EVENTS.ADD_QUESTION, question);
+            questionInput.value = '';
+            questionNumber.value = (teams.questions.length + 1).toString();
+        });
+
+        updateQuestionBtn.addEventListener('click', () => {
+            if (!selectedQuestion) {
+                alert('Please select a question to update');
+                return;
+            }
+            if (!questionInput.value.trim()) {
+                alert('Please enter a question');
+                return;
+            }
+            const updatedQuestion = {
+                ...selectedQuestion,
+                text: questionInput.value.trim(),
+                number: parseInt(questionNumber.value) || selectedQuestion.number
+            };
+            socket.emit(SOCKET_EVENTS.UPDATE_QUESTION, updatedQuestion);
+        });
+
+        removeQuestionBtn.addEventListener('click', () => {
+            if (!selectedQuestion) {
+                alert('Please select a question to remove');
+                return;
+            }
+            if (confirm('Are you sure you want to remove this question?')) {
+                socket.emit(SOCKET_EVENTS.REMOVE_QUESTION, selectedQuestion.id);
+                selectedQuestion = null;
+                questionInput.value = '';
+                questionNumber.value = '1';
+            }
+        });
+
+        // Question Navigation
+        const prevQuestionBtn = document.getElementById('prevQuestion');
+        const nextQuestionBtn = document.getElementById('nextQuestion');
+        const currentQuestionNumber = document.getElementById('currentQuestionNumber');
+        
+        let currentQuestionIndex = 0;
+        
+        function updateCurrentQuestion() {
+            if (teams.questions && teams.questions.length > 0) {
+                currentQuestionNumber.textContent = currentQuestionIndex + 1;
+                socket.emit('SET_CURRENT_QUESTION', currentQuestionIndex);
+            }
+        }
+        
+        prevQuestionBtn.addEventListener('click', () => {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                updateCurrentQuestion();
+            }
+        });
+        
+        nextQuestionBtn.addEventListener('click', () => {
+            if (teams.questions && currentQuestionIndex < teams.questions.length - 1) {
+                currentQuestionIndex++;
+                updateCurrentQuestion();
+            }
+        });
+
+        socket.on('update', (data) => {
+            teams = data;
+            timerDisplay.textContent = teams.timer;
+            
+            // Update team inputs
+            team1NameInput.value = teams.team1.name;
+            team1PointsInput.value = teams.team1.points;
+            team2NameInput.value = teams.team2.name;
+            team2PointsInput.value = teams.team2.points;
+            
+            // Update timer state
+            isTimerRunning = teams.timer > 0;
+            updateButtonStates();
+
+            // Update questions list
+            if (data.questions) {
+                teams.questions = data.questions;
+                updateQuestionsList(data.questions);
+                // Update navigation buttons state
+                prevQuestionBtn.disabled = currentQuestionIndex === 0;
+                nextQuestionBtn.disabled = !teams.questions.length || 
+                    currentQuestionIndex >= teams.questions.length - 1;
+            }
+            if (data.currentQuestionIndex !== undefined) {
+                currentQuestionIndex = data.currentQuestionIndex;
+                currentQuestionNumber.textContent = currentQuestionIndex + 1;
+            }
+        });
+
+        // Initial state update
+        updateButtonStates();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+
+    <link rel="stylesheet" href="./global.css" />
+    <link rel="stylesheet" href="./index.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap"
+    />
+    <script src="/socket.io/socket.io.js"></script>
+  </head>
+  <body>
+    <div class="home">
+      <div class="cyper-name">
+        <div class="cyper-name-child"></div>
+        <div class="cyberquest-20">CyberQuest 2.0</div>
+      </div>
+      <div class="numbered-list">
+        <div class="frame-parent">
+          <div class="frame-wrapper">
+            <div class="parent">
+              <a class="a" id="minutes">00:</a>
+              <div class="wrapper">
+                <a class="a1" id="seconds">30</a>
+              </div>
+            </div>
+          </div>
+          <img
+            class="altered-sticker-1"
+            loading="lazy"
+            alt=""
+            src="./img/altered sticker.png"
+          />
+        </div>
+      </div>
+      <main class="frame-group">
+        <div class="cc-logo-white-1-wrapper">
+          <img
+            class="cc-logo-white-1"
+            loading="lazy"
+            alt=""
+            src="./img/cc logo white.png"
+          />
+        </div>
+        <section class="game-info">
+          <div class="game-board-container">
+            <div class="game-board">
+              <div class="teams-and-points">
+                <div class="team-x-row">
+                  <div class="team-x-details">
+                    <div class="team-x-icon">
+                      <img
+                        class="coin-icon"
+                        loading="lazy"
+                        alt=""
+                        src="./img/coin.png"
+                      />
+                    </div>
+                    <div class="team-x-score">
+                      <img
+                        class="coin-2-icon"
+                        loading="lazy"
+                        alt=""
+                        src="./img/coin 2.png"
+                      />
+
+                      <div class="team-y-row">
+                        <div class="team-y-details">
+                          <div class="team-y-icon">
+                            <div class="team-y-icon-image">
+                              <div class="cyber">Cyber</div>
+                              <div class="quest-20">Quest 2.0</div>
+                            </div>
+                          </div>
+                          <div class="teams-header">
+                            <div class="team-name-headers">
+                              <div class="team-name-labels">
+                                <div class="team-x" id="team1-name">Team X</div>
+                                <div class="points-headers">
+                                  <div class="points-0" id="team1-points">Points : 0</div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="divider"></div>
+                            <div class="team-name-headers1">
+                              <div class="team-y-parent">
+                                <div class="team-y" id="team2-name">Team Y</div>
+                                <div class="points-0-wrapper">
+                                  <div class="points-01" id="team2-points">Points : 0</div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="question-1-wrapper">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="what-is-tcpip-parent">
+                  <div class="questions-container">
+                    <div class="question-progress">
+                      <div class="progress-dots" id="progressDots">
+                        <!-- Dots will be added dynamically -->
+                      </div>
+                      <div class="progress-bar">
+                        <div class="progress-fill" id="questionProgress"></div>
+                      </div>
+                      <div class="progress-text" id="progressText">Question 1/5</div>
+                    </div>
+                    <div class="question-header">
+                      <h2 class="what-is-tcpip" id="currentQuestion">what is TCP/IP ?</h2>
+                    </div>
+                  </div>
+
+          </div>
+          <div class="sticker-container">
+            <img
+              class="altered-sticker-2"
+              loading="lazy"
+              alt=""
+              src="./img/thm stickerc.png"
+            />
+          </div>
+        </section>
+      </main>
+    </div>
+    <script>
+      const socket = io();
+      
+      // DOM Elements
+      const minutesEl = document.getElementById('minutes');
+      const secondsEl = document.getElementById('seconds');
+      const team1NameEl = document.getElementById('team1-name');
+      const team1PointsEl = document.getElementById('team1-points');
+      const team2NameEl = document.getElementById('team2-name');
+      const team2PointsEl = document.getElementById('team2-points');
+      const currentQuestionEl = document.getElementById('currentQuestion');
+      const progressBarEl = document.getElementById('questionProgress');
+      const progressTextEl = document.getElementById('progressText');
+      const progressDotsEl = document.getElementById('progressDots');
+      
+      let currentQuestionIndex = 0;
+      let questions = [];
+      
+      function createDots(total) {
+        progressDotsEl.innerHTML = '';
+        for (let i = 0; i < total; i++) {
+          const dot = document.createElement('div');
+          dot.className = 'dot';
+          progressDotsEl.appendChild(dot);
+        }
+      }
+      
+      function updateDots() {
+        const dots = progressDotsEl.children;
+        for (let i = 0; i < dots.length; i++) {
+          dots[i].className = 'dot';
+          if (i < currentQuestionIndex) {
+            dots[i].classList.add('completed');
+          } else if (i === currentQuestionIndex) {
+            dots[i].classList.add('current');
+          }
+        }
+      }
+      
+      // Timer animation function
+      function updateTimer(time) {
+        const minutes = Math.floor(time / 60);
+        const seconds = time % 60;
+        
+        // Add animation class for last 10 seconds
+        if (time <= 10) {
+          minutesEl.classList.add('timer-warning');
+          secondsEl.classList.add('timer-warning');
+        } else {
+          minutesEl.classList.remove('timer-warning');
+          secondsEl.classList.remove('timer-warning');
+        }
+        
+        minutesEl.textContent = String(minutes).padStart(2, '0') + ':';
+        secondsEl.textContent = String(seconds).padStart(2, '0');
+      }
+      
+      function updateProgressBar() {
+        if (questions.length > 0) {
+          const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
+          progressBarEl.style.width = `${progress}%`;
+          progressTextEl.textContent = `Question ${currentQuestionIndex + 1}/${questions.length}`;
+          
+          // Update dots
+          updateDots();
+          
+          // Add active animation when changing questions
+          progressBarEl.classList.add('active');
+          setTimeout(() => {
+            progressBarEl.classList.remove('active');
+          }, 1000);
+        }
+      }
+      
+      function updateQuestionDisplay() {
+        if (questions.length > 0) {
+          const question = questions[currentQuestionIndex];
+          
+          // Add animation class
+          currentQuestionEl.style.animation = 'none';
+          currentQuestionEl.offsetHeight; // Trigger reflow
+          currentQuestionEl.style.animation = null;
+          
+          // Update content
+          currentQuestionEl.textContent = question.text;
+          updateProgressBar();
+        }
+      }
+      
+      function updateTeamDisplay(teams) {
+        // Update team names
+        team1NameEl.textContent = teams.team1.name;
+        team2NameEl.textContent = teams.team2.name;
+        
+        // Update points with animation
+        team1PointsEl.style.animation = 'none';
+        team2PointsEl.style.animation = 'none';
+        team1PointsEl.offsetHeight; // Trigger reflow
+        team2PointsEl.offsetHeight;
+        team1PointsEl.style.animation = null;
+        team2PointsEl.style.animation = null;
+        
+        team1PointsEl.textContent = `Points : ${teams.team1.points}`;
+        team2PointsEl.textContent = `Points : ${teams.team2.points}`;
+      }
+      
+      // Handle updates from server
+      socket.on('update', (data) => {
+        // Update timer
+        updateTimer(data.timer);
+        
+        // Update teams
+        updateTeamDisplay(data);
+        
+        if (data.questions) {
+          questions = data.questions;
+          // Create dots if questions length changed
+          if (progressDotsEl.children.length !== questions.length) {
+            createDots(questions.length);
+          }
+          if (data.currentQuestionIndex !== undefined) {
+            currentQuestionIndex = data.currentQuestionIndex;
+          }
+          updateQuestionDisplay();
+        }
+      });
+      
+      // Handle timer completion
+      socket.on('timerComplete', () => {
+        minutesEl.classList.add('timer-complete');
+        secondsEl.classList.add('timer-complete');
+        
+        setTimeout(() => {
+          minutesEl.classList.remove('timer-complete');
+          secondsEl.classList.remove('timer-complete');
+        }, 1000);
+      });
+    </script>
+  </body>
+</html>
